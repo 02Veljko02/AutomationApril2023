@@ -11,8 +11,8 @@ public class MenuElementPage {
     public MenuElementPage(WebDriver driver){
         this.driver = driver;
     }
-    public long countElements(){
-        List<WebElement> elements = driver.findElements(By.xpath("//li"));
-        return elements.stream().count();
+    public int countElements(){
+        List<WebElement> elements = driver.findElements(By.tagName("li"));
+        return elements.size();
     }
 }
