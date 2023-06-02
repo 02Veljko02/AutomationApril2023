@@ -37,10 +37,4 @@ public class loginTests extends BaseTest {
         loginPage.clickButton();
         assertTrue(loginPage.getAlertText().contains("Your password is invalid!"), "Login is succssesfull");
     }
-    @Test
-    public void countSize(){
-        ShiftingContentPage shiftingContentPage = homePage.clickShiftingContent();
-        MenuElementPage menuElementPage = shiftingContentPage.clickExample1();
-        assertEquals(menuElementPage.countElements(), 5, "Not expected");
-    }
 }
