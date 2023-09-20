@@ -13,4 +13,7 @@ public class SecureAreaPage {
     public String getAlertMessage() {
         return driver.findElement(alertMessage).getText();
     }
+    public void acceptAlert(){
+        driver.switchTo().alert().accept();
+    }
 }

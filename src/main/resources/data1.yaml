@@ -1,0 +1,9 @@
+data1:
+  username: tomsmith
+  password: SuperSecretPassword!
+data2:
+  username: veljko123
+  password: SuperSecretPassword!
+data3:
+  username: tomsmith
+  password: veljko123

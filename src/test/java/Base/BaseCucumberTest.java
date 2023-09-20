@@ -16,18 +16,17 @@ import pages.HomePage;
 import java.io.File;
 import java.io.IOException;
 
-public class BaseTest {
+public class BaseCucumberTest {
     private WebDriver driver;
     public HomePage homePage;
     private File screenshotPath;
-    @BeforeClass
+
     public void setUp(){
         driver = new ChromeDriver();
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         //driver.get("https://the-internet.herokuapp.com");
         this.goHome();
         driver.manage().window().maximize();
-        homePage = new HomePage(driver);
     }
     @BeforeMethod
     public void goHome(){
@@ -35,15 +34,15 @@ public class BaseTest {
         homePage = new HomePage(driver);
     }
     public void takeScreenshot(ITestResult result){
-     var camera = (TakesScreenshot)driver;
-     File screenshot = camera.getScreenshotAs(OutputType.FILE);
-     screenshotPath = new File(
-             "C:\\Users\\Informatika\\IdeaProjects\\AutomationApril2023\\src\\main\\resources\\screenshots\\" + result.getName() +".png");
-     try {
-         Files.move(screenshot, screenshotPath);
-     } catch (IOException ex){
-         ex.printStackTrace();
-     }
+        var camera = (TakesScreenshot)driver;
+        File screenshot = camera.getScreenshotAs(OutputType.FILE);
+        screenshotPath = new File("C:\\Users\\Informatika\\IdeaProjects\\AutomationApril2023" +
+                "\\src\\main\\resources\\screenshots\\" + result.getName() +".png");
+        try {
+            Files.move(screenshot, screenshotPath);
+        } catch (IOException ex){
+            ex.printStackTrace();
+        }
     }
     @AfterMethod
     public void inportScreenshotInReport(ITestResult result){
@@ -51,17 +50,19 @@ public class BaseTest {
         if (!result.isSuccess()){
             takeScreenshot(result);
             Reporter.log(result.getName() + " " + "has failed");
-            Reporter.log("<a target='_blank' href ='" + screenshotPath + "'height='400' width='400'>Screenshot</a>");
-    }
+            Reporter.log("<a target='_blank' href ='" + screenshotPath +
+                    "'height='400' width='400'>Screenshot</a>");
+        }
         else if (result.isSuccess()) {
             Reporter.log(result.getName() + "has passed");
         }
         else{
             Reporter.log(result.getName() + "has skipped");
+        }
     }
-    }
-    @AfterClass
+
     public void tearDown(){
         driver.quit();
     }
 }
+

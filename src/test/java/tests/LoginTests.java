@@ -1,17 +1,14 @@
 package tests;
 
 import Base.BaseTest;
-import org.openqa.selenium.bidi.log.Log;
 import org.testng.annotations.Test;
 import pages.LoginPage;
-import pages.MenuElementPage;
 import pages.SecureAreaPage;
-import pages.ShiftingContentPage;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.*;
 
-public class loginTests extends BaseTest {
+public class LoginTests extends BaseTest {
     @Test
     public void testSuccessfullLogin(){
         LoginPage loginPage = homePage.clickFormsAuthentication();

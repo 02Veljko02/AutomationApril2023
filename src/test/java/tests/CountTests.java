@@ -6,9 +6,8 @@ import pages.MenuElementPage;
 import pages.ShiftingContentPage;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.*;
 
-public class CountTest extends BaseTest {
+public class CountTests extends BaseTest {
     @Test
     public void countSize(){
         ShiftingContentPage shiftingContentPage = homePage.clickShiftingContent();

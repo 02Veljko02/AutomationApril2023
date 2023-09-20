@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class LoginPage {
     private WebDriver driver;
@@ -16,10 +18,15 @@ public class LoginPage {
     driver.findElement(usernameField).sendKeys(username);
     }
     public void setPassword(String password){
-        driver.findElement(passwordField).sendKeys(password);
+        WebElement sifra = driver.findElement(passwordField);
+        Actions actions = new Actions(driver);
+        actions.sendKeys(sifra, password).perform();
     }
     public SecureAreaPage clickButton(){
-        driver.findElement(loginField).click();
+        WebElement dugme = driver.findElement(loginField);
+        Actions actions = new Actions(driver);
+        actions.click(dugme).perform();
+
         return new SecureAreaPage(driver);
     }
     public String getAlertText(){
